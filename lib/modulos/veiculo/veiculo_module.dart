@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gestao_frotas_app/modulos/veiculo/registrar_avarias_veiculo/registrar_avaria_module.dart';
+import 'package:gestao_frotas_app/modulos/veiculo/solicitar_manutencao_veiculo/solicitar_manutencao_veiculo_module.dart';
 import 'package:gestao_frotas_app/modulos/veiculo/start_page.dart';
 import 'package:gestao_frotas_app/modulos/veiculo/visualizar_informacoes_veiculo/visualizar_informacoes_veiculo_module.dart';
 
@@ -18,7 +19,7 @@ class VeiculoModule extends Module {
         child: (context) => const StartPage(), children: [
           ModuleRoute('/visualizar_info', module: VisualizarInformacoesVeiculoModule()),
           ModuleRoute('/avarias', module: RegistrarAvariaModule()),
-          // ModuleRoute('/visualizar_info', module: VisualizarInformacoesVeiculoModule()),
+          ModuleRoute('/solicitar_manutencao', module: SolicitarManutencaoVeiculoModule()),
         ]);
   }
 }

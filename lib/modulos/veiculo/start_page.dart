@@ -21,6 +21,9 @@ class _StartPageState extends State<StartPage> {
       case 1:
         Modular.to.navigate('/home/veiculo/avarias/');
         break;
+      case 2:
+        Modular.to.navigate('/home/veiculo/solicitar_manutencao/');
+        break;
       default:
     }
     setState(() {
