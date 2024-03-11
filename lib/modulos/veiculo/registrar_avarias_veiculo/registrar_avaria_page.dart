@@ -19,8 +19,8 @@ class _RegistrarAvariaPageState extends State<RegistrarAvariaPage> {
    @override
    Widget build(BuildContext context) {
        return Scaffold(
-        drawer: ClassCustomDrawerWidget(),
-           appBar: CustomAppbarPadrao(),
+        drawer: const ClassCustomDrawerWidget(),
+           appBar: const CustomAppbarPadrao(),
            body: Container(),
        );
   }
