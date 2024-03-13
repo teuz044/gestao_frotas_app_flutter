@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gestao_frotas_app/core/ui/class_custom_drawer_widget.dart';
 import 'package:gestao_frotas_app/core/ui/class_estilos_texto.dart';
 import 'package:gestao_frotas_app/core/ui/custom_appbar_padrao.dart';
@@ -16,19 +15,6 @@ class _VisualizarInformacoesVeiculoPageState
     extends State<VisualizarInformacoesVeiculoPage> {
   int currentPageIndex = 0;
   final pageViewController = PageController();
-
-  void verificarIndice() {
-    switch (currentPageIndex) {
-      case 0:
-        Modular.to.navigate('home/veiculo');
-        break;
-      case 1:
-        Modular.to.navigate('home/veiculo/avarias');
-        break;
-      default:
-    }
-  }
-
   @override
   void dispose() {
     super.dispose();
