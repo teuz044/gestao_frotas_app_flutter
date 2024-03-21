@@ -15,8 +15,8 @@ class ClassDropdownButton {
   Widget getWidget(
     State sttState,
     String label, {
-    double height = 46,
-    double size = 0.30,
+    double height = 25,
+    double size = 0.25,
     Color? borderColor,
     VoidCallback? onPressed,
   }) {
@@ -25,12 +25,12 @@ class ClassDropdownButton {
         border: InputBorder.none,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: borderColor ?? Colors.blue,
+            color: borderColor ?? Colors.red,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: borderColor ?? Colors.blue,
+            color: borderColor ?? Colors.red,
           ),
         ),
         contentPadding: const EdgeInsets.all(11.0),

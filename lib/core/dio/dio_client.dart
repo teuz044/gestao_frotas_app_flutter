@@ -10,9 +10,6 @@ class DioClient extends DioForNative {
                   'https://frothub.onrender.com/', //TODO: alterar quando for para rota de produção
               connectTimeout: const Duration(seconds: 120),
               receiveTimeout: const Duration(seconds: 120),
-              headers: {
-                session.Session.token.isNotEmpty
-                    ? "Authorization" : "Bearer ${session.Session.token}": null,
-              }),
+              headers: {"Authorization" : "Bearer ${session.Session.token}",}),
         );
 }
