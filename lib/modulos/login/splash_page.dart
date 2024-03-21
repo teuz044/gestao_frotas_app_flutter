@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: SizedBox(
         height: MediaQuery.of(context).size.height *100,
-        child:  Image.asset("assets/images/Music App.png", fit: BoxFit.cover,)
+        child:  Image.asset("assets/images/frotasLogo.png", fit: BoxFit.cover,)
       )
     );
   }

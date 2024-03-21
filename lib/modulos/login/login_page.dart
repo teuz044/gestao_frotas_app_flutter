@@ -164,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: ClassEstilosTextos
                                   .branccoSize24w600Montserrat,
                             ))
-                        : Center(child: const CircularProgressIndicator()),
+                        : const Center(child: CircularProgressIndicator()),
                   ],
                 ),
               ),
