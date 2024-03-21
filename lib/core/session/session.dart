@@ -1,6 +1,6 @@
-
 class Session {
   static String userName = '';
+  static String userEmail = '';
   static int userId = 0;
   static String token = '';
   static int selectedIndexBottomNavigatorBarVeiculos = 0;

@@ -43,6 +43,8 @@ dependencies:
   mobx_codegen: ^2.6.0+1
   google_fonts: 6.1.0
   build_runner: ^2.4.8
+  mask_text_input_formatter: ^2.4.0
+  jwt_decoder: ^2.0.1
 
 dev_dependencies:
   flutter_test:

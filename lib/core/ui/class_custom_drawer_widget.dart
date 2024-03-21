@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gestao_frotas_app/core/ui/class_estilos_texto.dart';
+import '../session/session.dart' as session;
 
 class CustomDrawerWidget extends StatefulWidget {
   const CustomDrawerWidget({super.key, });
@@ -14,7 +15,6 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
 
 @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
   @override
@@ -33,7 +33,7 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
                   style: ClassEstilosTextos.branccoSize18w600Montserrat,
                   overflow: TextOverflow.ellipsis,
                 ),
-                accountEmail: const Text('matheus.gabriel3123@gmail.com'),
+                accountEmail:  Text(session.Session.userEmail),
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.black38,
                   child: Text(
@@ -70,6 +70,8 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
                   style: ClassEstilosTextos.pretoSize16w600Montserrat,
                 ),
                 onTap: () {
+                  session.Session.token = '';
+                  session.Session.userEmail = '';
                   Modular.to.popAndPushNamed('/');
                 },
               ),

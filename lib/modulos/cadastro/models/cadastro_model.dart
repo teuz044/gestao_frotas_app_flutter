@@ -1,49 +1,107 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-
 class CadastroModel {
-  String nmUser;
-  String email;
-  String password;
-  String role;
+  int? idCliente;
+  String? nome;
+  String? email;
+  String? senha;
+  int? tipoUsuario;
+  String? cpf;
+  String? rg;
+  String? dataNascimento;
+  String? celular;
+  String? endereO;
+  String? cep;
+  String? cidade;
+  String? estado;
+  String? statusConta;
   CadastroModel({
-    required this.nmUser,
-    required this.email,
-    required this.password,
-    required this.role,
+    this.idCliente,
+    this.nome,
+    this.email,
+    this.senha,
+    this.tipoUsuario,
+    this.cpf,
+    this.rg,
+    this.dataNascimento,
+    this.celular,
+    this.endereO,
+    this.cep,
+    this.cidade,
+    this.estado,
+    this.statusConta,
   });
 
-
   CadastroModel copyWith({
-    String? nmUser,
+    int? idCliente,
+    String? nome,
     String? email,
-    String? password,
-    String? role,
+    String? senha,
+    int? tipoUsuario,
+    String? cpf,
+    String? rg,
+    String? dataNascimento,
+    String? celular,
+    String? endereO,
+    String? cep,
+    String? cidade,
+    String? estado,
+    String? statusConta,
   }) {
     return CadastroModel(
-      nmUser: nmUser ?? this.nmUser,
+      idCliente: idCliente ?? this.idCliente,
+      nome: nome ?? this.nome,
       email: email ?? this.email,
-      password: password ?? this.password,
-      role: role ?? this.role,
+      senha: senha ?? this.senha,
+      tipoUsuario: tipoUsuario ?? this.tipoUsuario,
+      cpf: cpf ?? this.cpf,
+      rg: rg ?? this.rg,
+      dataNascimento: dataNascimento ?? this.dataNascimento,
+      celular: celular ?? this.celular,
+      endereO: endereO ?? this.endereO,
+      cep: cep ?? this.cep,
+      cidade: cidade ?? this.cidade,
+      estado: estado ?? this.estado,
+      statusConta: statusConta ?? this.statusConta,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nmUser': nmUser,
+      'idCliente': idCliente,
+      'nome': nome,
       'email': email,
-      'password': password,
-      'role': role,
+      'senha': senha,
+      'tipoUsuario': tipoUsuario,
+      'cpf': cpf,
+      'rg': rg,
+      'dataNascimento': dataNascimento,
+      'celular': celular,
+      'endereço': endereO,
+      'cep': cep,
+      'cidade': cidade,
+      'estado': estado,
+      'statusConta': statusConta,
     };
   }
 
   factory CadastroModel.fromMap(Map<String, dynamic> map) {
     return CadastroModel(
-      nmUser: map['nmUser'] as String,
-      email: map['email'] as String,
-      password: map['password'] as String,
-      role: map['role'] as String,
+      idCliente: map['idCliente'] != null ? map['idCliente'] as int : null,
+      nome: map['nome'] != null ? map['nome'] as String : null,
+      email: map['email'] != null ? map['email'] as String : null,
+      senha: map['senha'] != null ? map['senha'] as String : null,
+      tipoUsuario: map['tipoUsuario'] != null ? map['tipoUsuario'] as int : null,
+      cpf: map['cpf'] != null ? map['cpf'] as String : null,
+      rg: map['rg'] != null ? map['rg'] as String : null,
+      dataNascimento: map['dataNascimento'] != null ? map['dataNascimento'] as String : null,
+      celular: map['celular'] != null ? map['celular'] as String : null,
+      endereO: map['endereço'] != null ? map['endereço'] as String : null,
+      cep: map['cep'] != null ? map['cep'] as String : null,
+      cidade: map['cidade'] != null ? map['cidade'] as String : null,
+      estado: map['estado'] != null ? map['estado'] as String : null,
+      statusConta: map['statusConta'] != null ? map['statusConta'] as String : null,
     );
   }
 
@@ -53,7 +111,7 @@ class CadastroModel {
 
   @override
   String toString() {
-    return 'CadastroModel(nmUser: $nmUser, email: $email, password: $password, role: $role)';
+    return 'CadastroModel(idCliente: $idCliente, nome: $nome, email: $email, senha: $senha, tipoUsuario: $tipoUsuario, cpf: $cpf, rg: $rg, dataNascimento: $dataNascimento, celular: $celular, endereço: $endereO, cep: $cep, cidade: $cidade, estado: $estado, statusConta: $statusConta)';
   }
 
   @override
@@ -61,17 +119,37 @@ class CadastroModel {
     if (identical(this, other)) return true;
   
     return 
-      other.nmUser == nmUser &&
+      other.idCliente == idCliente &&
+      other.nome == nome &&
       other.email == email &&
-      other.password == password &&
-      other.role == role;
+      other.senha == senha &&
+      other.tipoUsuario == tipoUsuario &&
+      other.cpf == cpf &&
+      other.rg == rg &&
+      other.dataNascimento == dataNascimento &&
+      other.celular == celular &&
+      other.endereO == endereO &&
+      other.cep == cep &&
+      other.cidade == cidade &&
+      other.estado == estado &&
+      other.statusConta == statusConta;
   }
 
   @override
   int get hashCode {
-    return nmUser.hashCode ^
+    return idCliente.hashCode ^
+      nome.hashCode ^
       email.hashCode ^
-      password.hashCode ^
-      role.hashCode;
+      senha.hashCode ^
+      tipoUsuario.hashCode ^
+      cpf.hashCode ^
+      rg.hashCode ^
+      dataNascimento.hashCode ^
+      celular.hashCode ^
+      endereO.hashCode ^
+      cep.hashCode ^
+      cidade.hashCode ^
+      estado.hashCode ^
+      statusConta.hashCode;
   }
 }

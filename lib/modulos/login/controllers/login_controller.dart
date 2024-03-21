@@ -7,12 +7,23 @@ part 'login_controller.g.dart';
 
 class LoginController = LoginControllerBase with _$LoginController;
 
+enum LoginStateStatus {
+  initial,
+  loading,
+  success,
+  successResetPassword,
+  error;
+}
+
 abstract class LoginControllerBase with Store {
   final LoginRepository _loginRepository;
   LoginControllerBase(this._loginRepository);
 
   final emailEC = TextEditingController();
   final senhaEC = TextEditingController();
+
+  @readonly
+  var _status = LoginStateStatus.initial;
 
   @readonly
   String _errorMessage = '';
@@ -31,35 +42,24 @@ abstract class LoginControllerBase with Store {
   @action
   Future<bool> login(BuildContext context) async {
     try {
-      final Map<String, dynamic>? loginData =
-          await _loginRepository.login(emailEC.text, senhaEC.text, context);
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      final String? token = loginData?['token'];
-      final int? usuarioID = loginData?['cdUser'];
-      final String? usuarioNome = loginData?['nmUser'];
-      final int? statusCode = loginData?['statusCode'];
       _carregando = true;
+      _status = LoginStateStatus.loading;
+      await _loginRepository.login(emailEC.text, senhaEC.text, context);
       await Future.delayed(Duration.zero);
-      if (statusCode == 200) {
-        await prefs.setString('token', token ?? '');
-        await prefs.setInt('cdUser', usuarioID ?? 0);
-        await prefs.setString('usuarioNome', usuarioNome ?? '');
-
-        session.Session.userId = usuarioID ?? 0;
-        session.Session.userName = usuarioNome ?? '';
-        session.Session.token = token ?? '';
-
+      if (session.Session.token.isNotEmpty) {
+        _status = LoginStateStatus.success;
         _carregando = false;
         return true;
       } else {
+        _status = LoginStateStatus.error;
         _carregando = false;
         _errorMessage = 'Login não autorizado';
         return false;
       }
     } catch (e) {
+      _status = LoginStateStatus.error;
       _carregando = false;
-      throw Exception('Erro ao buscar anuncios');
+      throw Exception('Erro ao fazer login');
     }
   }
 
