@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
         body: ListView(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.40,
+              height: MediaQuery.of(context).size.height * 0.35,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const ImageIcon(
-                        const AssetImage(
+                        AssetImage(
                           'assets/images/logo.png',
                         ),
                         size: 50,
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50))),
-              height: MediaQuery.of(context).size.height * 0.60,
+              height: MediaQuery.of(context).size.height * 0.65,
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: ListView(

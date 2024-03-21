@@ -64,387 +64,393 @@ class _HomePageState extends State<HomePage> {
       drawer: const CustomDrawerWidget(),
       appBar: const CustomAppbarPadrao(),
       body: Observer(builder: (context) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        return Stack(
           children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ExpansibleCardMobile(
-                      iconHeader: const Icon(
-                        Icons.travel_explore_outlined,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      title: 'Viagens',
-                      body: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(4),
-                              bottomRight: Radius.circular(4)),
+            Image.asset('assets/images/fundohome.jpg', fit: BoxFit.cover, height: double.infinity,
+          width: double.infinity,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ExpansibleCardMobile(
+                          iconHeader: const Icon(
+                            Icons.travel_explore_outlined,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                          title: 'Viagens',
+                          body: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(4),
+                                  bottomRight: Radius.circular(4)),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.red.shade300,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.add_road_rounded,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Visualizar viagem',
+                                          style: ClassEstilosTextos
+                                              .branccoSize18w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarViagens = 0;
+                                      Modular.to.pushNamed(
+                                          '/home/viagens/visualizar_viagem/');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.red.shade200,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.flag_circle_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Iniciar viagem',
+                                          style: ClassEstilosTextos
+                                              .branccoSize20w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarViagens = 1;
+                                      Modular.to.pushNamed('/home/viagens/iniciar_viagem/');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.red.shade100,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.home_repair_service_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Paradas e eventos',
+                                          style: ClassEstilosTextos
+                                              .branccoSize20w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarViagens = 2;
+                                      Modular.to.pushNamed( '/home/viagens/paradas_eventos/');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          expandedCard: controller.isExpandedViagens,
+                          onTap: () {
+                            controller.isExpandedViagens =
+                                !controller.isExpandedViagens;
+                          },
+                          colorHeader: Colors.red.shade400,
                         ),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.green.shade400,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.add_road_rounded,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Visualizar viagem',
-                                      style: ClassEstilosTextos
-                                          .branccoSize18w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarViagens = 0;
-                                  Modular.to.pushNamed(
-                                      '/home/viagens/visualizar_viagem/');
-                                },
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.green.shade300,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.flag_circle_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Iniciar viagem',
-                                      style: ClassEstilosTextos
-                                          .branccoSize20w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarViagens = 1;
-                                  Modular.to.pushNamed('/home/viagens/iniciar_viagem/');
-                                },
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.green.shade200,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.home_repair_service_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Paradas e eventos',
-                                      style: ClassEstilosTextos
-                                          .branccoSize20w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarViagens = 2;
-                                  Modular.to.pushNamed( '/home/viagens/paradas_eventos/');
-                                },
-                              ),
-                            ),
-                          ],
+                        const SizedBox(
+                          height: 16,
                         ),
-                      ),
-                      expandedCard: controller.isExpandedViagens,
-                      onTap: () {
-                        controller.isExpandedViagens =
-                            !controller.isExpandedViagens;
-                      },
-                      colorHeader: Colors.green,
+                        ExpansibleCardMobile(
+                          iconHeader: const Icon(
+                            Icons.car_crash_outlined,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                          title: 'Veículos',
+                          body: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(4),
+                                  bottomRight: Radius.circular(4)),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.brown.shade400,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.document_scanner_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Informação do veículo',
+                                          style: ClassEstilosTextos
+                                              .branccoSize18w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarVeiculos = 0;
+                                      Modular.to.pushNamed(
+                                          '/home/veiculo/visualizar_info/');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.brown.shade300,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.car_repair_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Registrar avarias',
+                                          style: ClassEstilosTextos
+                                              .branccoSize20w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarVeiculos = 1;
+                                      Modular.to.pushNamed('/home/veiculo/avarias/');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.brown.shade200,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.car_rental_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Solicitar manutenção',
+                                          style: ClassEstilosTextos
+                                              .branccoSize20w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarVeiculos = 2;
+                                      Modular.to.pushNamed(
+                                          '/home/veiculo/solicitar_manutencao/');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          expandedCard: controller.isExpandedVeiculo,
+                          onTap: () {
+                            controller.isExpandedVeiculo =
+                                !controller.isExpandedVeiculo;
+                          },
+                          colorHeader: Colors.brown,
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        ExpansibleCardMobile(
+                          iconHeader: const Icon(
+                            Icons.mark_unread_chat_alt_outlined,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                          title: 'Comunicação e Histórico',
+                          body: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(4),
+                                  bottomRight: Radius.circular(4)),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.deepOrange.shade300,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.chat_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Conversar com gestores',
+                                          style: ClassEstilosTextos
+                                              .branccoSize18w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session.selectedIndexBottomNavigatorBarComunicacao = 0;
+                                      Modular.to.pushNamed('/home/comunicacao/conversar_gestor/');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.deepOrange.shade200,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.history_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Histórico de viagens',
+                                          style: ClassEstilosTextos
+                                              .branccoSize20w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session
+                                          .selectedIndexBottomNavigatorBarComunicacao = 1;
+                                      Modular.to.pushNamed(
+                                          '/home/comunicacao/historico_viagens/');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)),
+                                    color: Colors.deepOrange.shade100,
+                                  ),
+                                  child: ListTile(
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Icon(
+                                          Icons.history_edu_outlined,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'Histórico de abastecimento',
+                                          style: ClassEstilosTextos
+                                              .branccoSize20w600Montserrat,
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      session.Session.selectedIndexBottomNavigatorBarComunicacao = 2;
+                                      Modular.to.pushNamed('/home/comunicacao/historico_abastecimento/');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          expandedCard: controller.isExpandedComunicacao,
+                          onTap: () {
+                            controller.isExpandedComunicacao =
+                                !controller.isExpandedComunicacao;
+                          },
+                          colorHeader: Colors.deepOrange.shade400,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    ExpansibleCardMobile(
-                      iconHeader: const Icon(
-                        Icons.car_crash_outlined,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      title: 'Veículos',
-                      body: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(4),
-                              bottomRight: Radius.circular(4)),
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.brown.shade400,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.document_scanner_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Informação do veículo',
-                                      style: ClassEstilosTextos
-                                          .branccoSize18w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarVeiculos = 0;
-                                  Modular.to.pushNamed(
-                                      '/home/veiculo/visualizar_info/');
-                                },
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.brown.shade300,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.car_repair_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Registrar avarias',
-                                      style: ClassEstilosTextos
-                                          .branccoSize20w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarVeiculos = 1;
-                                  Modular.to.pushNamed('/home/veiculo/avarias/');
-                                },
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.brown.shade200,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.car_rental_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Solicitar manutenção',
-                                      style: ClassEstilosTextos
-                                          .branccoSize20w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarVeiculos = 2;
-                                  Modular.to.pushNamed(
-                                      '/home/veiculo/solicitar_manutencao/');
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      expandedCard: controller.isExpandedVeiculo,
-                      onTap: () {
-                        controller.isExpandedVeiculo =
-                            !controller.isExpandedVeiculo;
-                      },
-                      colorHeader: Colors.brown,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    ExpansibleCardMobile(
-                      iconHeader: const Icon(
-                        Icons.mark_unread_chat_alt_outlined,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      title: 'Comunicação e Histórico',
-                      body: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(4),
-                              bottomRight: Radius.circular(4)),
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.purple.shade500,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.chat_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Conversar com gestores',
-                                      style: ClassEstilosTextos
-                                          .branccoSize18w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session.selectedIndexBottomNavigatorBarComunicacao = 0;
-                                  Modular.to.pushNamed('/home/comunicacao/conversar_gestor/');
-                                },
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.purple.shade400,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.history_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Histórico de viagens',
-                                      style: ClassEstilosTextos
-                                          .branccoSize20w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session
-                                      .selectedIndexBottomNavigatorBarComunicacao = 1;
-                                  Modular.to.pushNamed(
-                                      '/home/comunicacao/historico_viagens/');
-                                },
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(4)),
-                                color: Colors.purple.shade300,
-                              ),
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.history_edu_outlined,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      'Histórico de abastecimento',
-                                      style: ClassEstilosTextos
-                                          .branccoSize20w600Montserrat,
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  session.Session.selectedIndexBottomNavigatorBarComunicacao = 2;
-                                  Modular.to.pushNamed('/home/comunicacao/historico_abastecimento/');
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      expandedCard: controller.isExpandedComunicacao,
-                      onTap: () {
-                        controller.isExpandedComunicacao =
-                            !controller.isExpandedComunicacao;
-                      },
-                      colorHeader: Colors.purple.shade600,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      'Gestão de Frotas APP v 1.0',
+                      style: TextStyle(color: Colors.black.withOpacity(0.3)),
+                    )),
+              ],
             ),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  'Gestão de Frotas APP v 1.0',
-                  style: TextStyle(color: Colors.black.withOpacity(0.3)),
-                )),
           ],
         );
       }),

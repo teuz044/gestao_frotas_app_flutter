@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../repository/login_repository.dart';
 import '/../core/session/session.dart' as session;
 part 'login_controller.g.dart';
