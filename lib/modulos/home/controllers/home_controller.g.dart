@@ -76,6 +76,24 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  late final _$_infoUsuarioAtom =
+      Atom(name: 'HomeControllerBase._infoUsuario', context: context);
+
+  InfoUserModel get infoUsuario {
+    _$_infoUsuarioAtom.reportRead();
+    return super._infoUsuario;
+  }
+
+  @override
+  InfoUserModel get _infoUsuario => infoUsuario;
+
+  @override
+  set _infoUsuario(InfoUserModel value) {
+    _$_infoUsuarioAtom.reportWrite(value, super._infoUsuario, () {
+      super._infoUsuario = value;
+    });
+  }
+
   late final _$_statusAtom =
       Atom(name: 'HomeControllerBase._status', context: context);
 

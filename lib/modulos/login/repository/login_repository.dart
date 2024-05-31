@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, body_might_complete_normally_nullable, depend_on_referenced_packages
+// ignore_for_file: use_build_context_synchronously, body_might_complete_normally_nullable, depend_on_referenced_packages, avoid_print
 import 'dart:developer';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
@@ -26,8 +26,10 @@ class LoginRepository {
         final String? token = data['access_token'];
         Map<String, dynamic> decodedToken = JwtDecoder.decode(token.toString());
         session.Session.token = token.toString();
-        session.Session.userId = decodedToken["iat"];
+        // session.Session.userId = decodedToken["id"];
+        session.Session.userId = 1;
         session.Session.userEmail = decodedToken["email"];
+        // session.Session.userName = decodedToken["nome"];
         print(token);
       } else if (response.statusCode == 400) {
       }

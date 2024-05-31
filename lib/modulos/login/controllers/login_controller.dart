@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import '../repository/login_repository.dart';
@@ -41,23 +43,23 @@ abstract class LoginControllerBase with Store {
   @action
   Future<bool> login(BuildContext context) async {
     try {
-      _carregando = true;
+      // _carregando = true;
       _status = LoginStateStatus.loading;
-      await _loginRepository.login(emailEC.text, senhaEC.text, context);
       await Future.delayed(Duration.zero);
+      await _loginRepository.login(emailEC.text, senhaEC.text, context);
       if (session.Session.token.isNotEmpty) {
         _status = LoginStateStatus.success;
-        _carregando = false;
+        // _carregando = false;
         return true;
       } else {
         _status = LoginStateStatus.error;
-        _carregando = false;
+        // _carregando = false;
         _errorMessage = 'Login não autorizado';
         return false;
       }
     } catch (e) {
       _status = LoginStateStatus.error;
-      _carregando = false;
+      // _carregando = false;
       throw Exception('Erro ao fazer login');
     }
   }

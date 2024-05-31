@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gestao_frotas_app/core/ui/class_estilos_texto.dart';
@@ -24,7 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       statusReactionDisposer = reaction((_) => controller.status, (status) {
         switch (status) {
           case HomeControllerStateStatus.initial:
@@ -47,6 +46,8 @@ class _HomePageState extends State<HomePage> {
             break;
         }
       });
+      await controller.getInfoUsuario();
+      controller.extrairIniciaisNome();
     });
     super.initState();
   }

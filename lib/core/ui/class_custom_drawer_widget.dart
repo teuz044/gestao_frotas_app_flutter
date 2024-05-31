@@ -29,7 +29,7 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
               UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Colors.red.shade300),
                 accountName: Text(
-                  'Matheus Gabriel',
+                  session.Session.userName,
                   style: ClassEstilosTextos.branccoSize18w600Montserrat,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -37,7 +37,7 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.black38,
                   child: Text(
-                    'MT', // criar uma função para extrair apenas a inicial do nome da pessoa(fazer com split)
+                    session.Session.iniciaisNome, // criar uma função para extrair apenas a inicial do nome da pessoa(fazer com split)
                     style: ClassEstilosTextos.branccoSize24w600Montserrat,
                   ),
                 ),

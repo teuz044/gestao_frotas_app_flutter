@@ -28,7 +28,7 @@ class _IniciarViagemPageState extends State<IniciarViagemPage> {
         case IniciarViagemStateStatus.initial:
           break;
         case IniciarViagemStateStatus.loading:
-        Center(child: CircularProgressIndicator());
+        const Center(child: CircularProgressIndicator());
           break;
         case IniciarViagemStateStatus.success:
         setState(() {

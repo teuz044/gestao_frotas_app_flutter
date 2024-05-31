@@ -56,4 +56,11 @@ class ClassEstilosTextos {
     fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white
   );
 
+  static final verdeSize18w600OpenSans = GoogleFonts.openSans(
+    fontSize: 18, fontWeight: FontWeight.w600, color: Colors.green.shade700
+  );
+
+  static final vermelhoSize18w600OpenSans = GoogleFonts.openSans(
+    fontSize: 18, fontWeight: FontWeight.w600, color: Colors.red.shade700
+  );
 }

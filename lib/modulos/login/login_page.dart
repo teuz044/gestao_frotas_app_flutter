@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 
+import '../../core/loader/loader.dart';
 import '../../core/ui/class_estilos_texto.dart';
 import 'controllers/login_controller.dart';
 
@@ -14,19 +16,45 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with Loader {
   final controller = Modular.get<LoginController>();
+
+  
+  late final ReactionDisposer statusReactionDisposer;
 
   @override
   void initState() {
-    controller.limparCamposAoVoltar();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      statusReactionDisposer = reaction((_) => controller.status, (status) {
+        switch (status) {
+          case LoginStateStatus.initial:
+            break;
+          case LoginStateStatus.loading:
+            showLoader();
+            break;
+          case LoginStateStatus.success:
+            hideLoader();
+            setState(() {});
+            break;
+          case LoginStateStatus.successResetPassword:
+            hideLoader();
+            setState(() {});
+            break;
+          case LoginStateStatus.error:
+            hideLoader();
+            break;
+        }
+      });
+      controller.limparCamposAoVoltar();
+      setState(() {});
+    });
     super.initState();
   }
 
+
   @override
   void dispose() {
-    controller
-        .dispose(); // Chame o método de dispose do seu controller, se existir
+    controller.dispose(); // Chame o método de dispose do seu controller, se existir
     super.dispose();
   }
 
@@ -80,24 +108,12 @@ class _LoginPageState extends State<LoginPage> {
                       style: ClassEstilosTextos.pretoSize24w600Montserrat,
                     ),
                     const SizedBox(
-                      height: 4,
-                    ),
-                    InkWell(
-                      child: Text(
-                        'Cadastre-se aqui!',
-                        style: ClassEstilosTextos.pretoSize14w400Montserrat,
-                      ),
-                      onTap: () {
-                        Modular.to.pushNamed('/cadastro');
-                      },
-                    ),
-                    const SizedBox(
                       height: 16,
                     ),
                     TextField(
                       controller: controller.emailEC,
                       decoration: const InputDecoration(
-                        labelText: 'Usuário/Email',
+                        labelText: 'Email',
                         suffixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)),

@@ -37,7 +37,6 @@ abstract class IniciarViagemControllerBase with Store {
       _status = IniciarViagemStateStatus.loading;
       await Future.delayed(Duration.zero);
       _lstVeiculos = await _iniciarViagemRepositoryImpl.getVeiculo();
-      print(_lstVeiculos);
       if (_lstVeiculos.isNotEmpty) {
         _dpdVeiculos.loadFromObjectList(_lstVeiculos, 'id', '/modelo/ - /placa/', 'Não há veículo disponível');
       }

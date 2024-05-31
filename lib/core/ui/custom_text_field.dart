@@ -6,6 +6,7 @@ class CustomTextField extends StatefulWidget {
   final Icon? icone;
   final int? maxLines;
   final bool? isRequired;
+  final bool? enabled;
   final double? borderRadius;
 
   const CustomTextField({
@@ -13,7 +14,7 @@ class CustomTextField extends StatefulWidget {
     required this.controller,
     required this.titulo,
      this.icone,
-    this.isRequired, this.maxLines, this.borderRadius,
+    this.isRequired, this.maxLines, this.borderRadius, this.enabled,
   }) : super(key: key);
 
   @override
@@ -27,6 +28,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLines: widget.maxLines,
       controller: widget.controller,
       decoration: InputDecoration(
+        enabled: widget.enabled ?? true,
         labelText: widget.titulo,
         suffixIcon: widget.icone,
         alignLabelWithHint: true,
