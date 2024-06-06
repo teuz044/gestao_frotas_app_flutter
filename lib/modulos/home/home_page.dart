@@ -67,8 +67,7 @@ class _HomePageState extends State<HomePage> {
       body: Observer(builder: (context) {
         return Stack(
           children: [
-            Image.asset('assets/images/fundohome.jpg', fit: BoxFit.cover, height: double.infinity,
-          width: double.infinity,),
+            Image.asset('assets/images/fundohome.jpg', fit: BoxFit.cover, height: double.infinity, width: double.infinity,),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -98,38 +97,6 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(4),
                                         bottomRight: Radius.circular(4)),
-                                    color: Colors.red.shade300,
-                                  ),
-                                  child: ListTile(
-                                    title: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Icon(
-                                          Icons.add_road_rounded,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                        Text(
-                                          'Visualizar viagem',
-                                          style: ClassEstilosTextos
-                                              .branccoSize18w600Montserrat,
-                                        ),
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      session.Session
-                                          .selectedIndexBottomNavigatorBarViagens = 0;
-                                      Modular.to.pushNamed(
-                                          '/home/viagens/visualizar_viagem/');
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(4),
-                                        bottomRight: Radius.circular(4)),
                                     color: Colors.red.shade200,
                                   ),
                                   child: ListTile(
@@ -143,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                                           color: Colors.white,
                                         ),
                                         Text(
-                                          'Iniciar viagem',
+                                          'Visualizar rota',
                                           style: ClassEstilosTextos
                                               .branccoSize20w600Montserrat,
                                         ),
@@ -151,8 +118,8 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     onTap: () {
                                       session.Session
-                                          .selectedIndexBottomNavigatorBarViagens = 1;
-                                      Modular.to.pushNamed('/home/viagens/iniciar_viagem/');
+                                          .selectedIndexBottomNavigatorBarViagens = 0;
+                                      Modular.to.pushNamed('/home/viagens/visualizar_viagem/');
                                     },
                                   ),
                                 ),
@@ -182,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     onTap: () {
                                       session.Session
-                                          .selectedIndexBottomNavigatorBarViagens = 2;
+                                          .selectedIndexBottomNavigatorBarViagens = 1;
                                       Modular.to.pushNamed( '/home/viagens/paradas_eventos/');
                                     },
                                   ),

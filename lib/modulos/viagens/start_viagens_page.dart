@@ -18,9 +18,6 @@ class _StartViagensPageState extends State<StartViagensPage> {
         Modular.to.navigate('/home/viagens/visualizar_viagem');
         break;
       case 1:
-        Modular.to.navigate('/home/viagens/iniciar_viagem');
-        break;
-      case 2:
         Modular.to.navigate('/home/viagens/paradas_eventos');
         break;
       default:
@@ -45,54 +42,63 @@ class _StartViagensPageState extends State<StartViagensPage> {
    Widget build(BuildContext context) {
        return Scaffold(
       body: const RouterOutlet(),
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: verificarIndice,
-        indicatorColor: Colors.red.shade50,
-        surfaceTintColor: Colors.red.shade400,
-        backgroundColor: Colors.red.shade400,
-        selectedIndex: session.Session.selectedIndexBottomNavigatorBarViagens,
-        elevation: 4,
-        destinations: const <Widget>[
-          NavigationDestination(
-            selectedIcon: ImageIcon(
-              AssetImage('assets/icons/viagemAtiva.png'),
-              color: Colors.black,
-              size: 30,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          textTheme: Theme.of(context).textTheme.copyWith(
+                bodyMedium: const TextStyle(color: Colors.white), // Muda a cor do label para branco
+                bodySmall:  const TextStyle(color: Colors.white),
+              ),
+        ),
+        child: NavigationBar(
+          onDestinationSelected: verificarIndice,
+          indicatorColor: Colors.red.shade50,
+        
+          surfaceTintColor: Colors.red.shade400,
+          backgroundColor: Colors.red.shade400,
+          selectedIndex: session.Session.selectedIndexBottomNavigatorBarViagens,
+          elevation: 4,
+          destinations: const <Widget>[
+            NavigationDestination(
+              selectedIcon: ImageIcon(
+                AssetImage('assets/icons/viagemAtiva.png'),
+                color: Colors.black,
+                size: 30,
+              ),
+              icon: ImageIcon(
+                AssetImage('assets/icons/viagemAtiva.png'),
+                color: Colors.white,
+                size: 35,
+              ),
+              label: 'Visualizar viagem',
             ),
-            icon: ImageIcon(
-              AssetImage('assets/icons/viagemAtiva.png'),
-              color: Color(0xffEEFF84),
-              size: 35,
+            // NavigationDestination(
+            //   selectedIcon: ImageIcon(
+            //     AssetImage('assets/icons/iniciarViagem.png'),
+            //     color: Colors.black,
+            //     size: 30,
+            //   ),
+            //   icon: ImageIcon(
+            //     AssetImage('assets/icons/iniciarViagem.png'),
+            //     color: Color(0xffEEFF84),
+            //     size: 35,
+            //   ),
+            //   label: 'Iniciar viagem',
+            // ),
+            NavigationDestination(
+              selectedIcon: ImageIcon(
+                AssetImage('assets/icons/paradasEventos.png'),
+                color: Colors.black,
+                size: 30,
+              ),
+              icon: ImageIcon(
+                AssetImage('assets/icons/paradasEventos.png'),
+                color: Colors.white,
+                size: 35,
+              ),
+              label: 'Paradas e eventos',
             ),
-            label: 'Visualizar viagem',
-          ),
-          NavigationDestination(
-            selectedIcon: ImageIcon(
-              AssetImage('assets/icons/iniciarViagem.png'),
-              color: Colors.black,
-              size: 30,
-            ),
-            icon: ImageIcon(
-              AssetImage('assets/icons/iniciarViagem.png'),
-              color: Color(0xffEEFF84),
-              size: 35,
-            ),
-            label: 'Iniciar viagem',
-          ),
-          NavigationDestination(
-            selectedIcon: ImageIcon(
-              AssetImage('assets/icons/paradasEventos.png'),
-              color: Colors.black,
-              size: 30,
-            ),
-            icon: ImageIcon(
-              AssetImage('assets/icons/paradasEventos.png'),
-              color: Color(0xffEEFF84),
-              size: 35,
-            ),
-            label: 'Paradas e eventos',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

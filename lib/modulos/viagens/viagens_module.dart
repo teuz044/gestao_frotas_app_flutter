@@ -1,9 +1,7 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gestao_frotas_app/modulos/viagens/start_viagens_page.dart';
-
 import '../../core/dio/dio_client.dart';
-import 'iniciar_viagem/iniciar_viagem_module.dart';
 import 'paradas_eventos/paradas_eventos_module.dart';
 import 'visualizar_viagem/visualizar_viagem_module.dart';
 
@@ -19,7 +17,6 @@ class ViagensModule extends Module{
     r.child('/',
         child: (context) => const StartViagensPage(), children: [
           ModuleRoute('/visualizar_viagem', module: VisualizarViagemModule()),
-          ModuleRoute('/iniciar_viagem', module: IniciarViagemModule()),
           ModuleRoute('/paradas_eventos', module: ParadasEventosModule()),
         ]);
   }
