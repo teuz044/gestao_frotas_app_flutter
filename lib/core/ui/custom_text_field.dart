@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -7,14 +8,21 @@ class CustomTextField extends StatefulWidget {
   final int? maxLines;
   final bool? isRequired;
   final bool? enabled;
+  final bool validator;
+  final List<TextInputFormatter>? inputFormatters;
+  final void Function(String)? onChanged;
   final double? borderRadius;
 
   const CustomTextField({
     Key? key,
     required this.controller,
     required this.titulo,
-     this.icone,
-    this.isRequired, this.maxLines, this.borderRadius, this.enabled,
+    this.icone,
+    this.isRequired,
+    this.maxLines,
+    this.borderRadius,
+    this.enabled,
+    this.validator = false, this.inputFormatters, this.onChanged,
   }) : super(key: key);
 
   @override
@@ -27,23 +35,27 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       maxLines: widget.maxLines,
       controller: widget.controller,
+      inputFormatters: widget.inputFormatters,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
+        
         enabled: widget.enabled ?? true,
         labelText: widget.titulo,
         suffixIcon: widget.icone,
         alignLabelWithHint: true,
-        border:  OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(widget.borderRadius ?? 20)),
+        border: OutlineInputBorder(
+          borderRadius:
+              BorderRadius.all(Radius.circular(widget.borderRadius ?? 20)),
         ),
       ),
-      validator: (value) {
-        if (widget.isRequired != null && widget.isRequired!) {
-          if (value == null || value.isEmpty) {
-            return 'Campo obrigatório';
-          }
-        }
-        return null;
-      },
+      validator: widget.validator == true
+          ? (value) {
+              if (value == null || value.isEmpty) {
+                return 'O campo é obrigatório.';
+              }
+              return null;
+            }
+          : null,
     );
   }
 }

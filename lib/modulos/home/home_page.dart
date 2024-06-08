@@ -258,12 +258,12 @@ class _HomePageState extends State<HomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         const Icon(
-                                          Icons.car_rental_outlined,
+                                          Icons.local_gas_station_outlined,
                                           size: 30,
                                           color: Colors.white,
                                         ),
                                         Text(
-                                          'Solicitar manutenção',
+                                          'Registrar Abastecimento',
                                           style: ClassEstilosTextos
                                               .branccoSize20w600Montserrat,
                                         ),

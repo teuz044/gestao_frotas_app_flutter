@@ -92,7 +92,7 @@ class _StartPageState extends State<StartPage> {
               color: Color(0xffEEFF84),
               size: 35,
             ),
-            label: 'Solict. Manutenções',
+            label: 'Regis. Abastecimento',
           ),
         ],
       ),
