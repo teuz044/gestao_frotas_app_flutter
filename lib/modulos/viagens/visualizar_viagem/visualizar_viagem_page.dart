@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gestao_frotas_app/core/loader/loader.dart';
-import 'package:gestao_frotas_app/modulos/veiculo/visualizar_informacoes_veiculo/controllers/visualizar_informacoes_veiculo_controller.dart';
 import 'package:gestao_frotas_app/modulos/viagens/visualizar_viagem/controllers/visualizar_viagem_controller.dart';
 import 'package:mobx/mobx.dart';
 import '../../../core/session/session.dart' as session;
@@ -252,7 +251,7 @@ class _VisualizarViagemPageState extends State<VisualizarViagemPage>
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(12),
               child: ElevatedButton.icon(

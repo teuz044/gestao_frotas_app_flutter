@@ -39,6 +39,13 @@ class ClassEstilosTextos {
     fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white
   );
 
+   static final branccoSize16w600Montserrat = GoogleFonts.montserrat(
+    fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white
+  );
+
+   static final branccoSize14w600Montserrat = GoogleFonts.montserrat(
+    fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white
+  );
   static final branccoSize20w600Montserrat = GoogleFonts.montserrat(
     fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white
   );

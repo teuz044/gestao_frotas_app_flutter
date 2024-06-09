@@ -48,6 +48,8 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   url_launcher: ^6.0.20
   flutter_multi_formatter: ^2.11.16
+  printing: ^5.12.0
+  pdf: ^3.10.8
   
 dev_dependencies:
   flutter_test:

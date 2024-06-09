@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:gestao_frotas_app/modulos/viagens/visualizar_viagem/repositories/visualizar_viagem_repository.dart';
 import 'package:mobx/mobx.dart';
 import 'package:url_launcher/url_launcher_string.dart';

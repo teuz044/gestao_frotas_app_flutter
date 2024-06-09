@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(4),
                                         bottomRight: Radius.circular(4)),
-                                    color: Colors.red.shade200,
+                                    color: Colors.red.shade300,
                                   ),
                                   child: ListTile(
                                     title: Row(
@@ -117,40 +117,8 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                     onTap: () {
-                                      session.Session
-                                          .selectedIndexBottomNavigatorBarViagens = 0;
+                                      session.Session.selectedIndexBottomNavigatorBarViagens = 0;
                                       Modular.to.pushNamed('/home/viagens/visualizar_viagem/');
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(4),
-                                        bottomRight: Radius.circular(4)),
-                                    color: Colors.red.shade100,
-                                  ),
-                                  child: ListTile(
-                                    title: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Icon(
-                                          Icons.home_repair_service_outlined,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                        Text(
-                                          'Paradas e eventos',
-                                          style: ClassEstilosTextos
-                                              .branccoSize20w600Montserrat,
-                                        ),
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      session.Session
-                                          .selectedIndexBottomNavigatorBarViagens = 1;
-                                      Modular.to.pushNamed( '/home/viagens/paradas_eventos/');
                                     },
                                   ),
                                 ),
@@ -296,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.white,
                             size: 35,
                           ),
-                          title: 'Comunicação e Histórico',
+                          title: 'Históricos',
                           body: Container(
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -305,68 +273,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                             child: Column(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(4),
-                                        bottomRight: Radius.circular(4)),
-                                    color: Colors.deepOrange.shade300,
-                                  ),
-                                  child: ListTile(
-                                    title: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Icon(
-                                          Icons.chat_outlined,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                        Text(
-                                          'Conversar com gestores',
-                                          style: ClassEstilosTextos
-                                              .branccoSize18w600Montserrat,
-                                        ),
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      session.Session.selectedIndexBottomNavigatorBarComunicacao = 0;
-                                      Modular.to.pushNamed('/home/comunicacao/conversar_gestor/');
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(4),
-                                        bottomRight: Radius.circular(4)),
-                                    color: Colors.deepOrange.shade200,
-                                  ),
-                                  child: ListTile(
-                                    title: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Icon(
-                                          Icons.history_outlined,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                        Text(
-                                          'Histórico de viagens',
-                                          style: ClassEstilosTextos
-                                              .branccoSize20w600Montserrat,
-                                        ),
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      session.Session
-                                          .selectedIndexBottomNavigatorBarComunicacao = 1;
-                                      Modular.to.pushNamed(
-                                          '/home/comunicacao/historico_viagens/');
-                                    },
-                                  ),
-                                ),
                                 Container(
                                   decoration: BoxDecoration(
                                     borderRadius: const BorderRadius.only(

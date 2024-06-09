@@ -53,10 +53,6 @@ class _RegistrarAvariaPageState extends State<RegistrarAvariaPage> with Loader {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,136 +62,138 @@ class _RegistrarAvariaPageState extends State<RegistrarAvariaPage> with Loader {
       drawer: const CustomDrawerWidget(),
       appBar: const CustomAppbarPadrao(),
       body: Observer(builder: (context) {
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 11.0, top: 21),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Olá, ${session.Session.userName}!',
-                  style: ClassEstilosTextos.pretoSize18w400Montserrat,
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 11.0, top: 21),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Olá, ${session.Session.userName}!',
+                    style: ClassEstilosTextos.pretoSize18w400Montserrat,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 9,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 11.0, right: 40),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    flex: 3,
-                    child: Text(
-                      'Registrar avarias',
-                      style: ClassEstilosTextos.pretoSize20w600Montserrat,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  const Flexible(
-                      child: Icon(
-                    Icons.garage_outlined,
-                    size: 35,
-                  ))
-                ],
+              const SizedBox(
+                height: 9,
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 11.0, right: 29),
-              child: Divider(),
-            ),
-            const SizedBox(
-              height: 3,
-            ),
-            Visibility(
-              visible: session.Session.userIdVeiculo != 0,
-              child: Column(
-                children: [
-                  Text(
-                    'Veículo em uso',
-                    style: ClassEstilosTextos.pretoSize18w600Montserrat,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24.0, right: 24),
-                    child: Container(
-                      decoration:
-                          BoxDecoration(border: Border.all(color: Colors.grey)),
-                      child: ListTile(
-                        contentPadding:
-                            const EdgeInsets.only(left: 5, right: 5),
-                        minVerticalPadding: 0,
-                        title: Text(
-                          '${session.Session.veiculoMarca} - ${session.Session.veiculoModelo}',
-                          style: ClassEstilosTextos.pretoSize16w600Montserrat,
+              Padding(
+                padding: const EdgeInsets.only(left: 11.0, right: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      flex: 3,
+                      child: Text(
+                        'Registrar avarias',
+                        style: ClassEstilosTextos.pretoSize20w600Montserrat,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Flexible(
+                        child: Icon(
+                      Icons.garage_outlined,
+                      size: 35,
+                    ))
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 11.0, right: 29),
+                child: Divider(),
+              ),
+              const SizedBox(
+                height: 3,
+              ),
+              Visibility(
+                visible: session.Session.userIdVeiculo != 0,
+                child: Column(
+                  children: [
+                    Text(
+                      'Veículo em uso',
+                      style: ClassEstilosTextos.pretoSize18w600Montserrat,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24.0, right: 24),
+                      child: Container(
+                        decoration:
+                            BoxDecoration(border: Border.all(color: Colors.grey)),
+                        child: ListTile(
+                          contentPadding:
+                              const EdgeInsets.only(left: 5, right: 5),
+                          minVerticalPadding: 0,
+                          title: Text(
+                            '${session.Session.veiculoMarca} - ${session.Session.veiculoModelo}',
+                            style: ClassEstilosTextos.pretoSize16w600Montserrat,
+                          ),
+                          subtitle:
+                              Text('Placa: ${session.Session.veiculoPlaca}'),
+                          leading: Image.asset(
+                            'assets/images/uno.png',
+                            fit: BoxFit.cover,
+                            height: 65,
+                            width: 65,
+                          ),
                         ),
-                        subtitle:
-                            Text('Placa: ${session.Session.veiculoPlaca}'),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 11.0, right: 29),
+                      child: Divider(),
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Avarias registradas',
+                  style: ClassEstilosTextos.pretoSize16w600Montserrat,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 24.0, right: 24),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.lstAvarias.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      surfaceTintColor: Colors.white,
+                      elevation: 4,
+                      child: ListTile(
                         leading: Image.asset(
                           'assets/images/uno.png',
-                          fit: BoxFit.cover,
-                          height: 65,
-                          width: 65,
+                          fit: BoxFit.fill,
+                          width: 45,
+                          height: 30,
+                        ),
+                        trailing: const Icon(Icons.remove_red_eye_rounded),
+                        title: Text(
+                            controller.lstAvarias[index].tituloAvaria ?? '',
+                            style: ClassEstilosTextos.pretoSize16w600Montserrat,
+                            overflow: TextOverflow.ellipsis),
+                        subtitle: Text(
+                          controller.lstAvarias[index].mensagemAvaria ?? '',
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 11.0, right: 29),
-                    child: Divider(),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Text(
-                'Avarias registradas',
-                style: ClassEstilosTextos.pretoSize16w600Montserrat,
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 24.0, right: 24),
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.lstAvarias.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    surfaceTintColor: Colors.white,
-                    elevation: 4,
-                    child: ListTile(
-                      leading: Image.asset(
-                        'assets/images/uno.png',
-                        fit: BoxFit.fill,
-                        width: 45,
-                        height: 30,
-                      ),
-                      trailing: const Icon(Icons.remove_red_eye_rounded),
-                      title: Text(
-                          controller.lstAvarias[index].tituloAvaria ?? '',
-                          style: ClassEstilosTextos.pretoSize16w600Montserrat,
-                          overflow: TextOverflow.ellipsis),
-                      subtitle: Text(
-                        controller.lstAvarias[index].mensagemAvaria ?? '',
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         );
       }),
        floatingActionButton: session.Session.userIdVeiculo != 0 ? FloatingActionButton.extended(

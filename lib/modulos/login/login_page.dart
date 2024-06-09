@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> with Loader {
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
       return Scaffold(
-        backgroundColor: Colors.red.shade300,
+        backgroundColor: Colors.red.shade400,
         body: ListView(
           children: [
             SizedBox(
